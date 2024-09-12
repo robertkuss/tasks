@@ -1,3 +1,5 @@
+import { PassThrough } from "stream";
+
 /**
  * Consume an array of numbers, and return a new array containing
  * JUST the first and last number. If there are no elements, return
@@ -44,7 +46,13 @@ export function stringsToIntegers(numbers: string[]): number[] {
  */
 // Remember, you can write functions as lambdas too! They work exactly the same.
 export const removeDollars = (amounts: string[]): number[] => {
-    return [];
+    const dollarLess = amounts.map((item: string): string =>
+        item[0] === "$" ? item.slice(1) : item,
+    );
+    const amountArray = dollarLess.map((item: string): number =>
+        parseInt(item) ? parseInt(item) : 0,
+    );
+    return amountArray;
 };
 
 /**
@@ -53,7 +61,14 @@ export const removeDollars = (amounts: string[]): number[] => {
  * in question marks ("?").
  */
 export const shoutIfExclaiming = (messages: string[]): string[] => {
-    return [];
+    const messagesWithoutQuestion = messages.filter(
+        (message: string): boolean => !message.endsWith("?"),
+    );
+    const exclaimedMessages = messagesWithoutQuestion.map(
+        (message: string): string =>
+            message.endsWith("!") ? message.toUpperCase() : message,
+    );
+    return exclaimedMessages;
 };
 
 /**
@@ -61,7 +76,9 @@ export const shoutIfExclaiming = (messages: string[]): string[] => {
  * 4 letters long.
  */
 export function countShortWords(words: string[]): number {
-    return 0;
+    let shortWords: number = 0;
+    words.map((word: string) => (word.length < 4 ? shortWords++ : word));
+    return shortWords;
 }
 
 /**
@@ -70,7 +87,17 @@ export function countShortWords(words: string[]): number {
  * then return true.
  */
 export function allRGB(colors: string[]): boolean {
-    return false;
+    let RGBAll: boolean = true;
+    colors.map((color: string) => {
+        if (
+            color.toLowerCase() !== "red" &&
+            color.toLowerCase() !== "blue" &&
+            color.toLowerCase() !== "green"
+        ) {
+            RGBAll = false;
+        }
+    });
+    return RGBAll;
 }
 
 /**
@@ -81,7 +108,22 @@ export function allRGB(colors: string[]): boolean {
  * And the array [] would become "0=0".
  */
 export function makeMath(addends: number[]): string {
-    return "";
+    let total: number = 0;
+    let index: number = 0;
+    let equation: string = "";
+    if (addends.length === 0) {
+        return "0=0";
+    } else {
+        addends.map((item: number) => {
+            total += item;
+            equation += String(item);
+            if (index < addends.length - 1) {
+                equation += "+";
+            }
+            index++;
+        });
+    }
+    return total + "=" + equation;
 }
 
 /**
@@ -94,5 +136,18 @@ export function makeMath(addends: number[]): string {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
+    let taking: boolean = true;
+    let currentSum: number = 0;
+    let index: number = 0;
+    const injected = values.map((item: number): number => {
+        if (item > 0 && taking) {
+            currentSum += item;
+            index++;
+        } else {
+            taking = false;
+        }
+    });
+    const injectedPositive = [...values];
+    injectedPositive.splice(index + 1, 0, currentSum);
     return [];
 }
