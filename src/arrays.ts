@@ -6,14 +6,14 @@
  */
 export function bookEndList(numbers: number[]): number[] {
     let bookEnded: number[] = [];
-    if (numbers.length === 1) {
+    if (numbers.length > 1) {
+        bookEnded.push(numbers[0]);
+        bookEnded.push(numbers[numbers.length - 1]);
+    } else if (numbers.length === 1) {
         bookEnded.push(numbers[0]);
         bookEnded.push(numbers[0]);
-    } else if (numbers.length > 1) {
-        bookEnded.push(numbers[0]);
-        bookEnded.push(numbers[-1]);
     }
-    return numbers;
+    return bookEnded;
 }
 
 /**
@@ -30,7 +30,10 @@ export function tripleNumbers(numbers: number[]): number[] {
  * the number cannot be parsed as an integer, convert it to 0 instead.
  */
 export function stringsToIntegers(numbers: string[]): number[] {
-    return [];
+    const intArray = numbers.map((item: string): number =>
+        parseInt(item) ? parseInt(item) : 0,
+    );
+    return intArray;
 }
 
 /**
