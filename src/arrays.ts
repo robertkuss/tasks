@@ -137,10 +137,10 @@ export function makeMath(addends: number[]): string {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
-    /*let taking: boolean = true;
+    let taking: boolean = true;
     let currentSum: number = 0;
     let index: number = 0;
-    const injected = values.map((item: number): number => {
+    values.map((item: number) => {
         if (item > 0 && taking) {
             currentSum += item;
             index++;
@@ -149,6 +149,6 @@ export function injectPositive(values: number[]): number[] {
         }
     });
     const injectedPositive = [...values];
-    injectedPositive.splice(index + 1, 0, currentSum);*/
-    return values;
+    injectedPositive.splice(index + 1, 0, currentSum);
+    return injectedPositive;
 }
