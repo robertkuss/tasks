@@ -1,4 +1,4 @@
-import { subscribe } from "diagnostics_channel";
+//import { subscribe } from "diagnostics_channel";
 import { Answer } from "./interfaces/answer";
 import { Question, QuestionType } from "./interfaces/question";
 import { duplicateQuestion, makeBlankQuestion } from "./objects";
