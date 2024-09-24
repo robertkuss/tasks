@@ -182,6 +182,7 @@ export function addNewQuestion(
     questions: Question[],
     id: number,
     name: string,
+
     type: QuestionType,
 ): Question[] {
     return [...questions, makeBlankQuestion(id, name, type)];
@@ -195,6 +196,7 @@ export function addNewQuestion(
 export function renameQuestionById(
     questions: Question[],
     targetId: number,
+
     newName: string,
 ): Question[] {
     const renamedQuestion = questions.map(
@@ -216,6 +218,7 @@ export function renameQuestionById(
 export function changeQuestionTypeById(
     questions: Question[],
     targetId: number,
+
     newQuestionType: QuestionType,
 ): Question[] {
     const updatedQuestions = questions.map(
@@ -259,6 +262,7 @@ export function editOption(
     questions: Question[],
     targetId: number,
     targetOptionIndex: number,
+
     newOption: string,
 ): Question[] {
     const updatedOptions = questions.map(
@@ -286,6 +290,7 @@ export function editOption(
 export function duplicateQuestionInArray(
     questions: Question[],
     targetId: number,
+
     newId: number,
 ): Question[] {
     let duplicatedQuestions: Question[] = [...questions];

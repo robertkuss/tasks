@@ -2,7 +2,10 @@
 export type QuestionType = "multiple_choice_question" | "short_answer_question";
 
 /** A representation of a Question in a quizzing application */
+<<<<<<< HEAD
 
+=======
+>>>>>>> upstream/task-state
 export interface Question {
     /** A unique identifier for the question */
     id: number;
