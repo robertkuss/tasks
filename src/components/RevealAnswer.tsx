@@ -9,7 +9,7 @@ export function RevealAnswer(): React.JSX.Element {
 
     return (
         <span>
-            <button onClick={toggleRevealed}>Reveal Answer</button>
+            <Button onClick={toggleRevealed}>Reveal Answer</Button>
             {revealed ?
                 <div>42</div>
             :   <div></div>}
