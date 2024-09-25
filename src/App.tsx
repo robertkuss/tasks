@@ -1,4 +1,5 @@
 import React from "react";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Button, Col, Container, Row } from "react-bootstrap";
 import "./App.css";
 import { ChangeType } from "./components/ChangeType";
@@ -21,6 +22,7 @@ function App(): React.JSX.Element {
             <RevealAnswer></RevealAnswer>
             <StartAttempt></StartAttempt>
             <TwoDice></TwoDice>
+            <CycleHoliday></CycleHoliday>
         </div>
     );
 }
