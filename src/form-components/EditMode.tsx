@@ -21,37 +21,26 @@ export function EditMode(): React.JSX.Element {
     return (
         <div>
             <h3>Edit Mode</h3>
-            <div>
-                {name}
-                {isStudent ?
-                    <p>is a student</p>
-                :   <p>is not a student</p>}
-            </div>
-            <div>
-                <Form.Group controlId="name">
-                    <Form.Label>Name: </Form.Label>
-                    <Form.Control
-                        disabled={!editMode}
-                        value={name}
-                        onChange={updateName}
-                    />
-                </Form.Group>
-            </div>
             <Form.Check
                 type="switch"
-                id="is-edit-check"
-                label="Edit Mode"
+                id="update-edit-mode"
+                label="edit mode"
                 checked={editMode}
                 onChange={updateEditMode}
             />
-            <Form.Check
-                disabled={!editMode}
-                type="checkbox"
-                id="is-student-check"
-                label="Student"
-                checked={isStudent}
-                onChange={updateStudent}
-            />
+            {editMode && (
+                <Form.Check
+                    type="checkbox"
+                    id="is-student"
+                    label="student"
+                    checked={isStudent}
+                    onChange={updateStudent}
+                />
+            )}
+            {editMode && <Form.Control value={name} onChange={updateName} />}
+            {isStudent ?
+                <div> {name} is a student.</div>
+            :   <div> {name} is not a student</div>}
         </div>
     );
 }
