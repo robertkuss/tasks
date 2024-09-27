@@ -10,7 +10,7 @@ export function MultipleChoiceQuestion({
 }): React.JSX.Element {
     const [answer, setAnswer] = useState<string>(options[0]);
 
-    function updateAnswer(event: React.ChangeEvent<HTMLInputElement>) {
+    function updateAnswer(event: React.ChangeEvent<HTMLSelectElement>) {
         setAnswer(event.target.value);
     }
 
